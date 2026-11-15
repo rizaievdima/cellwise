@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 4/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 5/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -46,7 +46,8 @@ Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 4/9 · 3 — 0/4 · 4 — 0/11 �
 - [x] 2.3 Validation: conflicts, completion check.
 - [x] 2.4 Backtracking solver + solution counter (stops at 2) for the uniqueness check.
   Note: `src/engine/solver.ts` — bit masks + fewest-candidates-first; `solve` takes an optional RNG so 3.1 can reuse it for random full grids.
-- [ ] 2.5 Human-style solver, step 1: naked and hidden singles; returns steps `{ technique, cells, digit }`.
+- [x] 2.5 Human-style solver, step 1: naked and hidden singles; returns steps `{ technique, cells, digit }`.
+  Note: `src/engine/human/` — `nextStep` tries hidden singles (boxes → rows → columns) before naked singles; hidden-single steps also carry the `unit` for hint text. Elimination techniques will add an `eliminations` field to `Step`.
 - [ ] 2.6 Naked / hidden pairs, pointing pairs.
 - [ ] 2.7 Triples, box/line reduction, X-Wing.
 - [ ] 2.8 XY-Wing, Swordfish, simple chains.
