@@ -27,6 +27,7 @@ Store title: **Cellwise: Sudoku Logic**. Bundle ID / Android package: `app.sudok
 - Firebase via `@react-native-firebase`: Analytics, Crashlytics, Remote Config
 - Tests: Jest (`jest-expo` preset); engine and generator tests must also run in plain Node
 - Builds: EAS Build / EAS Submit. Native modules mean a **development build**, not Expo Go.
+- Continuous Native Generation: `ios/` and `android/` are generated, never committed (keep them in `.gitignore`) and never edited by hand. Native settings go only through `app.config.ts` and config plugins (AdMob, Firebase, expo-build-properties). Don't run `expo prebuild` as part of a task unless Dmytro asks; EAS runs it during the build.
 - No backend in MVP. UI is English only; keep every user-facing string in `src/strings.ts` so i18n can be added later.
 
 ## Structure
