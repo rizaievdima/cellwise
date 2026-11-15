@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 5/6 · 2 — 5/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 6/6 · 2 — 5/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -30,9 +30,9 @@ Progress: stage 0 — 0/8 · 1 — 5/6 · 2 — 5/9 · 3 — 0/4 · 4 — 0/11 �
 - [x] 1.4 Zustand + MMKV `persist`, first used by the settings store.
   Done when: a toggled setting survives an app restart on device.
   Note: code and Jest tests done (toggle → MMKV, rehydrate restores). MMKV v4 needs `react-native-nitro-modules` as a direct dependency; it does not run in Expo Go. Verified on a real Android phone (dev build): a toggled setting survives an app restart.
-- [ ] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
+- [x] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
   Done when: the dev client opens the app on a device.
-  Note: config ready — `eas.json` profiles `development` (APK / internal), `development-simulator`, `preview`, `production`; `expo-dev-client` added; EAS project linked via `extra.eas.projectId` in `app.config.ts`. Local `expo run:android` dev build runs on the emulator; waiting on the EAS build on a real phone.
+  Note: config ready — `eas.json` profiles `development` (APK / internal), `development-simulator`, `preview`, `production`; `expo-dev-client` added; EAS project linked via `extra.eas.projectId` in `app.config.ts`. EAS development build opens the app on a real Android phone; local `expo run:android` also works on the emulator. iOS device build still needs 0.3.
 - [x] 1.6 GitHub Actions: lint + tests on every push / PR.
   Done when: CI is green on main.
   Note: `.github/workflows/ci.yml` runs lint, typecheck and tests on Node 24 for every push and PR.
