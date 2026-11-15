@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 0/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 1/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -18,8 +18,9 @@ Progress: stage 0 — 0/8 · 1 — 0/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 �
 
 ## 1. Scaffold
 
-- [ ] 1.1 Expo + TypeScript strict + expo-router with routes `index`, `game`, `stats`, `settings` (placeholder screens).
+- [x] 1.1 Expo + TypeScript strict + expo-router with routes `index`, `game`, `stats`, `settings` (placeholder screens).
   Done when: `npx expo start` runs and navigation between all four works.
+  Note: Expo SDK 58. Routes live in root `app/`; config is `app.config.ts`. Checked in Expo Go on the iOS simulator by opening each route via deep link.
 - [ ] 1.2 Tooling: ESLint + Prettier, Jest (`jest-expo`), path aliases, `npm test` and `npm run lint` scripts.
   Done when: `npm test` passes with a sample test.
 - [ ] 1.3 Theme: `src/ui/theme.ts` with the tokens from CLAUDE.md; Literata + Inter loaded.
