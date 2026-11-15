@@ -4,9 +4,7 @@
   "main": "expo-router/entry",
   "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
     "lint": "expo lint",
     "test": "jest",
     "typecheck": "tsc --noEmit",
@@ -17,6 +15,7 @@
     "@expo-google-fonts/literata": "^0.4.3",
     "expo": "~58.0.25",
     "expo-constants": "~58.0.16",
+    "expo-dev-client": "~58.0.20",
     "expo-font": "~58.0.12",
     "expo-linking": "~58.0.17",
     "expo-router": "~58.0.31",

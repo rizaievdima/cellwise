@@ -98,7 +98,9 @@ Mockups in `docs/design/*.dc.html` (they need the design-canvas runtime to rende
 
 Update this section as scripts are added.
 
-- `npm test` — all tests
-- `npm run generate` — rebuild the puzzle bank
-- `npx expo start --dev-client`
-- `eas build --profile development --platform android`
+- `npm test` — all tests (Jest projects: `node` for `src/engine` + `tools`, `app` for `jest-expo`)
+- `npm run lint` — ESLint + Prettier check; `npm run format` — Prettier write
+- `npm run typecheck` — `tsc --noEmit`
+- `npm run generate` — rebuild the puzzle bank (stage 3)
+- `npm start` — `expo start --dev-client`
+- `eas build --profile development --platform android` (APK); `--profile development-simulator --platform ios` for the iOS Simulator
