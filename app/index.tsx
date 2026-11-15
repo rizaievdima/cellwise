@@ -1,33 +1,44 @@
 import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { strings } from '@/strings';
+import { Screen } from '@/ui/Screen';
+import { colors, layout, type } from '@/ui/theme';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.screen}>
-      <Text style={styles.title}>{strings.appName}</Text>
-      <Text style={styles.subtitle}>{strings.tagline}</Text>
+    <Screen>
+      <Text style={type.display}>{strings.appName}</Text>
+      <Text style={[type.body, styles.tagline]}>{strings.tagline}</Text>
+      <View style={styles.doubleRule} accessibilityElementsHidden importantForAccessibility="no">
+        <View style={styles.ruleThick} />
+        <View style={styles.ruleThin} />
+      </View>
       <View style={styles.links}>
-        <Link href="/game" style={styles.link}>
+        <Link href="/game" style={[type.item, styles.link]}>
           {strings.home.newGame}
         </Link>
-        <Link href="/stats" style={styles.link}>
+        <Link href="/stats" style={[type.item, styles.link]}>
           {strings.home.stats}
         </Link>
-        <Link href="/settings" style={styles.link}>
+        <Link href="/settings" style={[type.item, styles.link]}>
           {strings.home.settings}
         </Link>
       </View>
-    </SafeAreaView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, paddingHorizontal: 24, paddingTop: 40 },
-  title: { fontSize: 40 },
-  subtitle: { fontSize: 14, marginTop: 6 },
-  links: { marginTop: 32, gap: 8 },
-  link: { fontSize: 19, paddingVertical: 12 },
+  tagline: { marginTop: 6 },
+  doubleRule: { marginTop: 16, gap: 3 },
+  ruleThick: { height: 2, backgroundColor: colors.ink },
+  ruleThin: { height: 1, backgroundColor: colors.ink },
+  links: { marginTop: 24, borderTopWidth: 1, borderTopColor: colors.rule },
+  link: {
+    minHeight: layout.touchTarget,
+    paddingVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.rule,
+  },
 });

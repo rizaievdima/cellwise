@@ -1,24 +1,34 @@
 import { Link } from 'expo-router';
 import { StyleSheet, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { strings } from '@/strings';
+import { Screen } from '@/ui/Screen';
+import { colors, layout, type } from '@/ui/theme';
 
 export default function SettingsScreen() {
   return (
-    <SafeAreaView style={styles.screen}>
-      <Text style={styles.title}>{strings.screens.settings}</Text>
-      <Text style={styles.body}>{strings.common.comingSoon}</Text>
-      <Link href="/" dismissTo style={styles.link}>
+    <Screen>
+      <Text style={type.title}>{strings.screens.settings}</Text>
+      <Text style={[type.body, styles.body]}>{strings.common.comingSoon}</Text>
+      <Link href="/" dismissTo style={[type.button, styles.link]}>
         {strings.common.back}
       </Link>
-    </SafeAreaView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, paddingHorizontal: 24, paddingTop: 40 },
-  title: { fontSize: 28 },
-  body: { fontSize: 15, marginTop: 8 },
-  link: { fontSize: 17, paddingVertical: 12, marginTop: 24 },
+  body: { marginTop: 8 },
+  link: {
+    marginTop: 24,
+    alignSelf: 'flex-start',
+    minHeight: layout.touchTarget,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderWidth: layout.border,
+    borderColor: colors.ink,
+    borderRadius: layout.radius,
+    backgroundColor: colors.sheet,
+    color: colors.accent,
+  },
 });

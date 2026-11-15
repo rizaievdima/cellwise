@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 2/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 3/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -24,8 +24,9 @@ Progress: stage 0 — 0/8 · 1 — 2/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 �
 - [x] 1.2 Tooling: ESLint + Prettier, Jest (`jest-expo`), path aliases, `npm test` and `npm run lint` scripts.
   Done when: `npm test` passes with a sample test.
   Note: Jest runs two projects — `node` (plain Node, for `src/engine` and `tools`) and `app` (`jest-expo`). Also `npm run typecheck` and `npm run format`. `react-dom` pinned to 19.3.0 so npm can resolve expo-router's web peers. ESLint blocks React / Expo / `@/` imports in `src/engine` and `tools`.
-- [ ] 1.3 Theme: `src/ui/theme.ts` with the tokens from CLAUDE.md; Literata + Inter loaded.
+- [x] 1.3 Theme: `src/ui/theme.ts` with the tokens from CLAUDE.md; Literata + Inter loaded.
   Done when: a placeholder screen renders with paper background and both fonts.
+  Note: fonts load at runtime with `useFonts` from per-weight imports (Literata 400–700, Inter 400–600); each weight is its own family because Android ignores `fontWeight` for custom fonts. The paper dot grain is left for the stage 4 screens.
 - [ ] 1.4 Zustand + MMKV `persist`, first used by the settings store.
   Done when: a toggled setting survives an app restart on device.
 - [ ] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
