@@ -32,7 +32,7 @@ Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 5/9 · 3 — 0/4 · 4 — 0/11 �
   Note: code and Jest tests done (toggle → MMKV, rehydrate restores). MMKV v4 needs `react-native-nitro-modules` as a direct dependency; it does not run in Expo Go. Not ticked yet: needs the device check on the 1.5 dev build.
 - [ ] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
   Done when: the dev client opens the app on a device.
-  Note: config ready — `eas.json` profiles `development` (APK / internal), `development-simulator`, `preview`, `production`; `expo-dev-client` added; EAS project id goes into `app.config.ts` after `eas init`. Waiting on Dmytro's build.
+  Note: config ready — `eas.json` profiles `development` (APK / internal), `development-simulator`, `preview`, `production`; `expo-dev-client` added; EAS project linked via `extra.eas.projectId` in `app.config.ts`. Local `expo run:android` dev build runs on the emulator; waiting on the EAS build on a real phone.
 - [x] 1.6 GitHub Actions: lint + tests on every push / PR.
   Done when: CI is green on main.
   Note: `.github/workflows/ci.yml` runs lint, typecheck and tests on Node 24 for every push and PR.

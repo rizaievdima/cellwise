@@ -2,11 +2,8 @@ import type { ExpoConfig } from 'expo/config';
 
 const BUNDLE_ID = 'app.sudokucell.cellwise';
 
-/**
- * EAS project id. `eas init` cannot write to a dynamic config, so paste the id it prints here
- * (it is not a secret). Can also come from the EAS_PROJECT_ID env var.
- */
-const EAS_PROJECT_ID: string | undefined = process.env.EAS_PROJECT_ID;
+/** EAS project id from `eas init` (not a secret). */
+const EAS_PROJECT_ID = 'd4d1c9f6-5441-4c56-afb8-0453f9a4a476';
 
 const config: ExpoConfig = {
   name: 'Cellwise',
@@ -37,7 +34,9 @@ const config: ExpoConfig = {
   experiments: {
     typedRoutes: true,
   },
-  ...(EAS_PROJECT_ID ? { extra: { eas: { projectId: EAS_PROJECT_ID } } } : {}),
+  extra: {
+    eas: { projectId: EAS_PROJECT_ID },
+  },
 };
 
 export default config;
