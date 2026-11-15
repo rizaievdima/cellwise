@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 3/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -33,8 +33,9 @@ Progress: stage 0 — 0/8 · 1 — 3/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 �
 - [ ] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
   Done when: the dev client opens the app on a device.
   Note: config ready — `eas.json` profiles `development` (APK / internal), `development-simulator`, `preview`, `production`; `expo-dev-client` added; EAS project id goes into `app.config.ts` after `eas init`. Waiting on Dmytro's build.
-- [ ] 1.6 GitHub Actions: lint + tests on every push / PR.
+- [x] 1.6 GitHub Actions: lint + tests on every push / PR.
   Done when: CI is green on main.
+  Note: `.github/workflows/ci.yml` runs lint, typecheck and tests on Node 24 for every push and PR.
 
 ## 2. Engine (pure TypeScript, tests first)
 
