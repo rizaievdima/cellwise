@@ -3,7 +3,7 @@
 `[ ]` todo · `[x]` done. **(manual)** = Dmytro does it (accounts, payments, consoles).
 Claude Code ticks coding items after their "Done when" is met and adds a one-line note if anything changed.
 
-Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
+Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 1/9 · 3 — 0/4 · 4 — 0/11 · 5 — 0/7 · 6 — 0/4 · 7 — 0/4
 
 ## 0. Accounts and admin (manual, in parallel with code)
 
@@ -39,7 +39,8 @@ Progress: stage 0 — 0/8 · 1 — 4/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 �
 
 ## 2. Engine (pure TypeScript, tests first)
 
-- [ ] 2.1 Board model: parse / serialize 81-char strings, peers (row / column / box), givens vs entries.
+- [x] 2.1 Board model: parse / serialize 81-char strings, peers (row / column / box), givens vs entries.
+  Note: `src/engine/board.ts` — units / peers tables, digit bit masks, `Board` with givens and notes (bit masks) as plain arrays for JSON autosave.
 - [ ] 2.2 Moves: set digit, erase, toggle notes, undo history; mistake counting against the solution.
 - [ ] 2.3 Validation: conflicts, completion check.
 - [ ] 2.4 Backtracking solver + solution counter (stops at 2) for the uniqueness check.

@@ -1,4 +1,11 @@
+const path = require('node:path');
+
 const alias = { '^@/(.*)$': '<rootDir>/src/$1' };
+
+// babel-preset-expo is nested under expo/, and babel-jest must be the Jest 30 copy jest-expo uses.
+const dirOf = (pkg) => path.dirname(require.resolve(`${pkg}/package.json`));
+const babelPresetExpo = require.resolve('babel-preset-expo', { paths: [dirOf('expo')] });
+const babelJest = require.resolve('babel-jest', { paths: [dirOf('jest-expo')] });
 
 /** @type {import('jest').Config} */
 module.exports = {
@@ -8,7 +15,9 @@ module.exports = {
       displayName: 'node',
       testEnvironment: 'node',
       testMatch: ['<rootDir>/src/engine/**/*.test.ts', '<rootDir>/tools/**/*.test.ts'],
-      transform: { '^.+\\.ts$': ['babel-jest', { presets: ['babel-preset-expo'] }] },
+      transform: {
+        '^.+\\.ts$': [babelJest, { presets: [babelPresetExpo], babelrc: false, configFile: false }],
+      },
       moduleNameMapper: alias,
     },
     {
