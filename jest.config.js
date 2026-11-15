@@ -14,10 +14,11 @@ module.exports = {
     {
       displayName: 'app',
       preset: 'jest-expo',
+      setupFiles: ['<rootDir>/jest.setup.app.js'],
       testMatch: ['<rootDir>/{app,src}/**/*.test.{ts,tsx}'],
       testPathIgnorePatterns: ['/node_modules/', '<rootDir>/src/engine/'],
       transformIgnorePatterns: [
-        'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)',
+        'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg|nitro-core)',
       ],
       moduleNameMapper: alias,
     },

@@ -29,6 +29,7 @@ Progress: stage 0 — 0/8 · 1 — 3/6 · 2 — 0/9 · 3 — 0/4 · 4 — 0/11 �
   Note: fonts load at runtime with `useFonts` from per-weight imports (Literata 400–700, Inter 400–600); each weight is its own family because Android ignores `fontWeight` for custom fonts. The paper dot grain is left for the stage 4 screens.
 - [ ] 1.4 Zustand + MMKV `persist`, first used by the settings store.
   Done when: a toggled setting survives an app restart on device.
+  Note: code and Jest tests done (toggle → MMKV, rehydrate restores). MMKV v4 needs `react-native-nitro-modules` as a direct dependency; it does not run in Expo Go. Not ticked yet: needs the device check on the 1.5 dev build.
 - [ ] 1.5 EAS: `eas.json` (development / preview / production), bundle ID `app.sudokucell.cellwise`, development build on a real phone. Claude Code prepares the config; **(manual)** Dmytro runs the build.
   Done when: the dev client opens the app on a device.
 - [ ] 1.6 GitHub Actions: lint + tests on every push / PR.
