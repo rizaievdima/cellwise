@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cellwise — stats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer}
+a{color:#2B4C8C;text-decoration:none}a:hover{color:#1F3A6E}
+</style>
+</helmet>
+<main style="width: 390px; height: 844px; box-sizing: border-box; padding: 54px 24px 24px; display: flex; flex-direction: column; background-color: #F5F1E8; background-image: radial-gradient(rgba(70, 55, 30, 0.05) 1px, transparent 1px); background-size: 5px 5px; font-family: Inter, system-ui, sans-serif; color: #1F1D1A">
+  <header style="display: flex; align-items: center; gap: 6px; height: 48px; margin-left: -12px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #1F1D1A">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l-6 6 6 6"></path></svg>
+    </a>
+    <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 28px; font-weight: 600">Stats</h1>
+  </header>
+  <nav aria-label="Difficulty" style="margin-top: 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #CBBFA8">
+    <button type="button" aria-pressed="false" style="height: 44px; font-size: 14px; color: #5E5850; text-align: center">Easy</button>
+    <button type="button" aria-pressed="true" style="height: 44px; box-sizing: border-box; margin-bottom: -1px; border-bottom: 2px solid #1F1D1A; font-size: 14px; font-weight: 600; color: #1F1D1A; text-align: center">Medium</button>
+    <button type="button" aria-pressed="false" style="height: 44px; font-size: 14px; color: #5E5850; text-align: center">Hard</button>
+    <button type="button" aria-pressed="false" style="height: 44px; font-size: 14px; color: #5E5850; text-align: center">Expert</button>
+  </nav>
+  <div style="margin-top: 8px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px">
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Played</span>
+      <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">24</span>
+    </div>
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Won</span>
+      <span style="display: flex; align-items: baseline; gap: 8px">
+        <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">19</span>
+        <span style="font-size: 14px; color: #5E5850">79%</span>
+      </span>
+    </div>
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Best time</span>
+      <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">09:51</span>
+    </div>
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Average time</span>
+      <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">14:20</span>
+    </div>
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Current streak</span>
+      <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">3</span>
+    </div>
+    <div style="padding: 18px 0; border-bottom: 1px solid #CBBFA8; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5850">Best streak</span>
+      <span style="font-family: Literata, Georgia, serif; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums">7</span>
+    </div>
+  </div>
+  <div style="flex: 1"></div>
+  <div style="height: 56px; box-sizing: border-box; border: 1px dashed #8A8274; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5E5850">AdMob banner (adaptive)</div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

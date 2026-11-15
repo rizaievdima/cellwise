@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cellwise — game</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer}
+button:disabled{cursor:default}
+a{color:#2B4C8C;text-decoration:none}a:hover{color:#1F3A6E}
+</style>
+</helmet>
+<main style="width: 390px; height: 844px; box-sizing: border-box; padding: 54px 19px 24px; display: flex; flex-direction: column; gap: 16px; background-color: #F5F1E8; background-image: radial-gradient(rgba(70, 55, 30, 0.05) 1px, transparent 1px); background-size: 5px 5px; font-family: Inter, system-ui, sans-serif; color: #1F1D1A">
+  <header style="display: flex; align-items: center; justify-content: space-between; height: 48px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #1F1D1A">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l-6 6 6 6"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+      <span style="font-family: Literata, Georgia, serif; font-size: 18px; font-weight: 600">Medium</span>
+      <span style="font-size: 13px; color: #5E5850; font-variant-numeric: tabular-nums">07:42 · 1 of 3 mistakes</span>
+    </div>
+    <button type="button" aria-label="Pause" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 5v12M14 5v12"></path></svg>
+    </button>
+  </header>
+  <div style="align-self: center; width: 352px; box-sizing: border-box; padding: 2px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: #1F1D1A">
+    <sc-for list="{{boxes}}" as="box" hint-placeholder-count="9">
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: #CBBFA8">
+        <sc-for list="{{box.cells}}" as="cell" hint-placeholder-count="9">
+          <button type="button" aria-label="{{cell.label}}" style="aspect-ratio: 1; background: {{cell.bg}}; display: flex; align-items: center; justify-content: center; text-align: center">
+            <sc-if value="{{cell.given}}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 600; line-height: 1; color: #1F1D1A">{{cell.v}}</span>
+            </sc-if>
+            <sc-if value="{{cell.user}}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 400; line-height: 1; color: {{accent}}">{{cell.v}}</span>
+            </sc-if>
+            <sc-if value="{{cell.err}}" hint-placeholder-val="{{ false }}">
+              <span style="font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 400; line-height: 1; color: #A8372B; text-decoration: underline wavy #A8372B; text-underline-offset: 4px">{{cell.v}}</span>
+            </sc-if>
+            <sc-if value="{{cell.notes}}" hint-placeholder-val="{{ false }}">
+              <span style="width: 100%; height: 100%; box-sizing: border-box; padding: 2px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr))">
+                <sc-for list="{{cell.noteList}}" as="n" hint-placeholder-count="9">
+                  <span style="display: flex; align-items: center; justify-content: center; font-size: 10px; line-height: 1; color: #5E5850">{{n.d}}</span>
+                </sc-for>
+              </span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+    <button type="button" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 12px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5L4 9l4 4"></path><path d="M4 9h9a5 5 0 0 1 0 10h-3"></path></svg>
+      <span>Undo</span>
+    </button>
+    <button type="button" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 12px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14l8-8 5 5-8 8H6z"></path><path d="M10 19h9"></path></svg>
+      <span>Erase</span>
+    </button>
+    <button type="button" aria-pressed="false" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 12px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18l1-4L15 4l3 3L8 17z"></path><path d="M13 6l3 3"></path></svg>
+      <span>Notes</span>
+    </button>
+    <button type="button" aria-label="Hint (watch an ad)" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 12px; font-weight: 500">
+      <span style="position: relative; display: flex">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 16h5M9.5 19h3"></path><path d="M11 3a5.5 5.5 0 0 0-3.2 10c.5.4.7.9.7 1.5V16h5v-1.5c0-.6.2-1.1.7-1.5A5.5 5.5 0 0 0 11 3z"></path></svg>
+        <span aria-hidden="true" style="position: absolute; right: -11px; top: -5px; width: 16px; height: 16px; border-radius: 8px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
+          <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><path d="M2 1l5 3-5 3z" fill="#FBF8F1"></path></svg>
+        </span>
+      </span>
+      <span>Hint</span>
+    </button>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+    <sc-for list="{{keys}}" as="k" hint-placeholder-count="9">
+      <button type="button" aria-label="{{k.label}}" disabled="{{k.done}}" style="height: 54px; box-sizing: border-box; border: 1.5px solid {{k.border}}; border-radius: 4px; background: #FBF8F1; display: flex; align-items: center; justify-content: center; gap: 10px; color: {{k.color}}">
+        <span style="font-family: Literata, Georgia, serif; font-size: 26px; font-weight: 500; line-height: 1">{{k.d}}</span>
+        <span style="font-size: 11px; color: #5E5850">{{k.sub}}</span>
+      </button>
+    </sc-for>
+  </div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2B4C8C","options":["#2B4C8C","#1F1D1A","#2F6B4F","#6B3F8A"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#2B4C8C';
+    const P = '28.693...1.5...8....6.......4..6..9.35.8.7.46.2..1..5.......7....8...6.3...148.25';
+    const S = '284693571135274869976581432841365297359827146627419358512936784498752613763148925';
+    const U = { 2: '4', 10: '3', 12: '2', 18: '9', 19: '7', 27: '8', 29: '1', 40: '2', 42: '1', 45: '6', 48: '4', 55: '1', 56: '9', 58: '3', 64: '9', 72: '7' };
+    const NOTES = [6, 7, 8, 13, 14, 22, 73, 74];
+    const sel = 40;
+    const rowOf = (i) => Math.floor(i / 9);
+    const colOf = (i) => i % 9;
+    const boxOf = (i) => Math.floor(rowOf(i) / 3) * 3 + Math.floor(colOf(i) / 3);
+    const val = (i) => (P[i] !== '.' ? P[i] : (U[i] || ''));
+    const selV = val(sel);
+    const cands = (i) => {
+      const used = {};
+      for (let j = 0; j < 81; j++) {
+        if (j !== i && (rowOf(j) === rowOf(i) || colOf(j) === colOf(i) || boxOf(j) === boxOf(i)) && val(j)) used[val(j)] = true;
+      }
+      const out = [];
+      for (let d = 1; d <= 9; d++) out.push({ d: used[String(d)] ? '' : String(d) });
+      return out;
+    };
+    const boxes = [];
+    for (let b = 0; b < 9; b++) {
+      const cells = [];
+      for (let k = 0; k < 9; k++) {
+        const r = Math.floor(b / 3) * 3 + Math.floor(k / 3);
+        const c = (b % 3) * 3 + (k % 3);
+        const i = r * 9 + c;
+        const v = val(i);
+        const given = P[i] !== '.';
+        const user = !given && !!U[i] && U[i] === S[i];
+        const err = !given && !!U[i] && U[i] !== S[i];
+        const notes = !v && NOTES.indexOf(i) !== -1;
+        const peer = rowOf(i) === rowOf(sel) || colOf(i) === colOf(sel) || boxOf(i) === boxOf(sel);
+        let bg = '#FBF8F1';
+        if (peer) bg = '#F1EAD3';
+        if (selV && v === selV) bg = '#DCE3F0';
+        if (err) bg = '#F2D9D3';
+        if (i === sel) bg = '#E9D58C';
+        cells.push({ v, given, user, err, notes, noteList: notes ? cands(i) : [], bg, label: 'Row ' + (r + 1) + ', column ' + (c + 1) + (v ? ', ' + v : ', empty') });
+      }
+      boxes.push({ cells });
+    }
+    const keys = [];
+    for (let d = 1; d <= 9; d++) {
+      const ds = String(d);
+      let n = 0;
+      for (let i = 0; i < 81; i++) {
+        if (P[i] === ds || (U[i] === ds && S[i] === ds)) n++;
+      }
+      const left = 9 - n;
+      const done = left === 0;
+      keys.push({ d: ds, done, sub: done ? 'done' : left + ' left', color: done ? '#8A8274' : '#1F1D1A', border: done ? '#CBBFA8' : '#1F1D1A', label: 'Digit ' + ds + (done ? ', all placed' : ', ' + left + ' left') });
+    }
+    return { accent, boxes, keys };
+  }
+}
+</script>
+</body>
+</html>
